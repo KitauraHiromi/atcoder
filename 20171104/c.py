@@ -6,7 +6,7 @@ c = list(map(float, input().split(" ")))
 a.sort()
 c.sort()
 
-
+# from https://github.com/python/cpython/blob/3.6/Lib/bisect.py
 def bisect_left(a, x, lo=0, hi=None):
     """Return the index where to insert item x in list a, assuming a is sorted.
     The return value i is such that all e in a[:i] have e < x, and all e in
