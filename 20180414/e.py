@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Contents   : AtCoder Regular Contest 95 TLE
+Contents   : AtCoder Regular Contest 095 e問題 TLE
 Author     : Kitaura Hiromi
 LastUpdate : 20180418
 Since      : 20180416
