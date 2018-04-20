@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Contents   : AtCoder Regular Contest094 e問題 accepted
+Contents   : AtCoder Regular Contest 094 e問題 AC
 Author     : Kitaura Hiromi
 LastUpdate : 20180420
 Since      : 20180414

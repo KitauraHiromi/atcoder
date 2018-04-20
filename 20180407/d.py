@@ -1,33 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-Contents   : AtCoder Regular Contest094 d問題 不正解
-             全探索しようとしたが、s = A*Bが大きくなりすぎて無理くさい
-             最大値だけ探せばいいから、数学的に簡単化する方法を考えたい
+Contents   : AtCoder Regular Contest 094 d問題 AC
 Author     : Kitaura Hiromi
 LastUpdate : 20180414
 Since      : 20180414
+Comment    : 不等式での押さえ込みを意識すること。探索でやりたい。
 """
-from math import ceil
-
-# 高橋くんのスコアsとし、スコアがそれ未満になる順位を(x, y)とすると、yは
-# y < s / x
-# を満たす.
-# y = ceil(s / x) - 1なるyを順に選べば、スコアがそれ以下になる人数の最大数が求まる.
+from math import ceil, sqrt
 
 Q = int(input())
 for i in range(Q):
-    A, B = map(int, input().split(" "))
-    cnt = 0
+    A, B = sorted(map(int, input().split(" ")))
     s = A*B
 
-    for j in range(1, s):
-        if j != A:
-            y = ceil(s // j) - 1
-            if y > 0:
-                for k in range(s, 1, -1):
-                    if k > y:
-                        pass
-                    else:
-                        cnt += 1
-                        break
-    print(cnt)
+    if A == B:
+        print(2*A - 2)
+    elif A == B + 1:
+        print(2*A - 2)
+    else:
+        C = ceil(sqrt(s)) - 1
+        if C*(C+1) >= s:
+            print(2*C - 2)
+        else:
+            print(2*C - 1)

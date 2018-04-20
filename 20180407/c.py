@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Contents   : AtCoder Regular Contest 94 C問題 AC
+Author     : Kitaura Hiromi
+LastUpdate : 20180414
+Since      : 20180414
+https://img.atcoder.jp/arc094/editorial.pdf
+"""
+
 A, B, C = map(int, input().split(" "))
 cnt = 0
 
