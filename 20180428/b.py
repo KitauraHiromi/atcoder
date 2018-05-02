@@ -1,33 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+Contents   : AtCoder Grand Contest 023 AC
+Author     : Kitaura Hiromi
+LastUpdate : 20180502
+Since      : 20180502
+"""
+
 N = int(input())
 S = []
 for i in range(N):
     S.append(input())
+
 def check(S, A, B):
     for i in range(N):
-        for j in range(N):
-            if i + A < N:
-                a = i + A
-            else:
-                a = i + A - N
-            if j + B < N:
-                b = j + B
-            else:
-                b = j + B - N
-            if j + A < N:
-                c = j + A
-            else:
-                c = j + A - N
-            if i + B < N:
-                d = i + B
-            else:
-                d = i + B - N
-            if S[a][b] != S[c][d]:
-                return False
-    return True
+        for j in range(i+1, N):
+            # if S[i][j+B-N] != S[j][i+B-N]:
+            if S[i][j] != S[j][i]:
+                return 0
+    return 1
 
 cnt = 0
 for i in range(N):
-    for j in range(N):
-        if check(S, i, j):
-            cnt += 1
-print(cnt)
+    # cnt += check(S, 0, i)
+    cnt += check(S[i:] + S[:i], 0, i)
+print(cnt * N)
