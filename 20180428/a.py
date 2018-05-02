@@ -2,17 +2,29 @@
 """
 Contents   : AtCoder Grand Contest 023
 Author     : Kitaura Hiromi
-LastUpdate : 20180428
+LastUpdate : 20180502
 Since      : 20180428
 """
 N = int(input())
 A = list(map(int, input().split(" ")))
 
-
-# O(N^2)
-cnt = 0
+# O(NlogN)
+S = []
+tmp = 0
 for i in range(N):
-    for j in range(i+1, N+1):
-        if sum(A[i:j]) == 0:
-            cnt += 1
-print(cnt)
+    S.append(tmp)
+    tmp += A[i]
+S.append(tmp)
+S = sorted(S)
+cnt = 1
+ret = 0
+tmp = S[0]
+for i in range(1, len(S)):
+    if tmp == S[i]:
+        cnt += 1
+    else:
+        ret += cnt * (cnt - 1) // 2
+        cnt = 1
+        tmp = S[i]
+ret += cnt * (cnt - 1) // 2
+print(ret)
