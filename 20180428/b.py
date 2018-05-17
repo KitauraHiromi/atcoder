@@ -11,6 +11,7 @@ S = []
 for i in range(N):
     S.append(input())
 
+# for文は遅いので転置を使うと速くなる
 def check(S, A, B):
     for i in range(N):
         for j in range(i+1, N):
