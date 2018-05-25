@@ -1,23 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-Contents   : Atcoder Beginners Selection ABC049C RE
+Contents   : Atcoder Beginners Selection ABC049C AC
 Author     : Kitaura Hiromi
-LastUpdate : 20180428
+LastUpdate : 20180525
 Since      : 20180428
 """
 S = input()
 
-def dfs(s, N):
-    if len(s) > N:
-        return False
-    elif len(s) == N:
-        if s == S:
-            return True
-    elif s == S[:len(s)]:
-        return dfs(s + "dream", N) or dfs(s + "dreamer", N) or dfs(s + "erase", N) or dfs(s + "eraser", N)
-    return False
-
-if dfs("", len(S)):
+S = S[::-1]
+T = ""
+cnt = 0
+while len(T) < len(S):
+    if(S[cnt:cnt+3] == "mae"):
+        T += "maerd"
+        cnt += 5
+    elif(S[cnt:cnt+3] == "rem"):
+        T += "remaerd"
+        cnt += 7
+    elif(S[cnt:cnt+3] == "esa"):
+        T += "esare"
+        cnt += 5
+    else:
+        T += "resare"
+        cnt += 6
+if T == S:
     print("YES")
 else:
     print("NO")
