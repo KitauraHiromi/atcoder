@@ -36,6 +36,17 @@ vector<vector<int> > possible_pos(set<vector<int>> state){
     return ret;
 }
 
+bool state_pass(set<vector<int>> state){
+    for(auto q_i: state){
+        for(auto q_j: state){
+            if(q_i != q_j)
+                if(q_i[0] == q_j[0] || q_i[1] == q_j[1] || abs(q_i[0] - q_j[0]) - abs(q_i[1] - q_j[1]) == 0)
+                    return false;
+        }
+    }
+    return true;
+}
+
 int main(void){
     // dfs
     // 状態はクイーンの置かれている座標のセット
@@ -64,6 +75,7 @@ int main(void){
 
     while(!st.empty()){
         auto state = st.top(); st.pop();
+        if(!state_pass(state)) break;
         for(auto pos: possible_pos(state)){
             // コピーコンストラクタ
             set<vector<int>> new_state(state);
