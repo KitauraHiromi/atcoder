@@ -1,11 +1,12 @@
 /*
- * Contents   : (プロジェクト全体の役割)
- * Author     : (製作者の名前) (製作者の所属)
- * LastUpdate : (更新日YYYY/MM/DD)
- * Since      : (作成日YYYY/MM/DD)
+ * Contents   : ARC002 B問題 AC
+ * Author     : KitauraHiromi
+ * LastUpdate : 20180530
+ * Since      : 20180528
  */
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 vector<int> next_day(vector<int> ymd){
     vector<int> ret(ymd);
@@ -23,7 +24,7 @@ vector<int> next_day(vector<int> ymd){
         // 月末処理 2月
     }else{
         // 非うるう年
-        if(ymd[0] % 4 != 0 ||(ymd[0] % 100 == 0 && ymd[0] % 400 == 0)){
+        if(ymd[0] % 4 != 0 ||(ymd[0] % 100 == 0 && ymd[0] % 400 != 0)){
             if(ymd[2] == 28){ ret[1] += 1; ret[2] = 1; }
             else{ ret[2] += 1; }
         // うるう年
@@ -41,12 +42,16 @@ bool dividable(vector<int> ymd){
 }
 
 int main(void){
+    string _y, _m, _d;
     int y, m, d;
-    cin >> y >> m >> d;
+    getline(cin, _y, '/'); getline(cin, _m, '/'); getline(cin, _d, '/');
+    y = stoi(_y); m = stoi(_m); d = stoi(_d);
+
     vector<int> ymd({y, m, d});
     while(!dividable(ymd)){
         ymd = next_day(ymd);
     }
-    cout << ymd[0] << '/' << ymd[1] << '/' << ymd[2] << endl;
+    // cout << ymd[0] << '/' << ymd[1] << '/' << ymd[2] << endl;
+    printf("%d/%02d/%02d\n", ymd[0], ymd[1], ymd[2]);
     return 0;
 }
