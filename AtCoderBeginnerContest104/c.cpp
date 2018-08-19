@@ -1,4 +1,10 @@
-#include <bits/stdc++.h>
+/*
+ * Contents   : ABC104 C AC
+ * Author     : Kitaura Hiromi
+ * LastUpdate : 20180819
+ * Since      : 20180819
+ */
+ #include <bits/stdc++.h>
 using namespace std;
 #define MAX_D 11
 #define INF 1<<30
