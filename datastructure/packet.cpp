@@ -34,7 +34,7 @@ void solve(){
 
 			// パケットをはみ出す部分
 			while(tl < tr && tl % B != 0) if (A[tl++] <= x) c++;
-			while(tl < tr && tl % B != 0) if (A[--tl] <= x) c++;
+			while(tl < tr && tr % B != 0) if (A[--tr] <= x) c++;
 
 			// パケットごと
 			while(tl < tr){
