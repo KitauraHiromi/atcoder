@@ -32,15 +32,18 @@ void solve(){
 			int x = nums[md];
 			int tl = l, tr = r, c = 0;
 
-			// パケットをはみ出す部分
-			while(tl < tr && tl % B != 0) if (A[tl++] <= x) c++;
-			while(tl < tr && tr % B != 0) if (A[--tr] <= x) c++;
+			// 区間内のx以下の要素数を数える 
+			{
+				// パケットをはみ出す部分
+				while(tl < tr && tl % B != 0) if (A[tl++] <= x) c++;
+				while(tl < tr && tr % B != 0) if (A[--tr] <= x) c++;
 
-			// パケットごと
-			while(tl < tr){
-				int b = tl / B;
-				c += upper_bound(bucket[b].begin(), bucket[b].end(), x) - bucket[b].begin();
-				tl += B;
+				// パケットごと
+				while(tl < tr){
+					int b = tl / B;
+					c += upper_bound(bucket[b].begin(), bucket[b].end(), x) - bucket[b].begin();
+					tl += B;
+				}
 			}
 			if(c >= k) ub = md;
 			else lb = md;
