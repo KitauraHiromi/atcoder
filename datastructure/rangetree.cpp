@@ -31,7 +31,7 @@ void init(int k, int l, int r){
 // [i, j)のx以下の数の個数を数える
 // kは節点の個数で、区間[l, r)に対応する
 int query(int i, int j, int x, int k, int l, int r){
-	if(j <= l || r < i){
+	if(j <= l || r < i){mk
 		// 完全に交差しない
 		return 0;
 	}else if(i <= l && r <= j){
