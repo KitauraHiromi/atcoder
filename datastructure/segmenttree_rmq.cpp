@@ -10,10 +10,6 @@ void init(){
 	for(int i = n-2; i>=0; i--) dat[i] = min(dat[2 * i + 1], dat[2 * i + 2]);
 }
 
-void update(){
-
-}
-
 // [i, j)の最小値を求める
 // k: ノードの番号, dat[k]: [l, r)の最小値
 int query(int i, int j, int k, int l, int r){
