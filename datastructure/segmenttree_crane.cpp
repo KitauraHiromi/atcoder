@@ -51,7 +51,7 @@ void change(int s, double a, int v, int l, int r){
 }
 
 void solve(){
-	//init(0, 0, N);
+	init(0, 0, N);
 	for(int i=1; i<N; i++) prv[i] = M_PI;
 
 		// 各クエリを処理
