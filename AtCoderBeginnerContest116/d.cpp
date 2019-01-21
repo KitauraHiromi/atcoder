@@ -27,15 +27,16 @@ signed main(){
     rep(i, k){
         ts += s[i].first;
         if(t.find(s[i].second) != t.end()) p.pb(s[i]);
-        else t.insert(s[i].second);
+        t.insert(s[i].second);
     }
     reverse(p.begin(), p.end());
     ll x = t.size();
     repq(i, k, n){
-        if(t.find(s[i].second) != t.end());
-        else q.pb(s[i]);
-    }
+        if(t.find(s[i].second) != t.end()) continue;
+        t.insert(s[i].second);
+        q.pb(s[i]);
 
+    }
     ll ret = ts;
     rep(i, min(p.size(), q.size())){
         ret = max(ret, ts + x * x);
