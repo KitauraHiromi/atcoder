@@ -1,1 +1,5 @@
 *.exe
+*.bat
+*.in
+*.out
+*.test
