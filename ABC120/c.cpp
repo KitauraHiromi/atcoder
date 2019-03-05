@@ -13,25 +13,22 @@ using namespace std;
 typedef long long ll;
 typedef pair<int, int> P;
 int n;
+stack<char> st;
 
 signed main(){
     string s; cin >> s;
-    char c[MAX_N];
-    c[0] = s[0];
-    int k = 0, ret = 0;
-    FOR(i, 1, s.size()){
-        if(s[i] == c[k]){
+    int ret = 0;
+    FOR(i, 0, s.size()){
+        if(st.empty()) st.push(s[i]);
+        else if(st.top() != s[i]){
             // 見ている要素とマッチングした場合
             ret += 2;
-            k = max(k-1, 0);
+            st.pop();
         }else{
             // マッチングしなかった場合
-            k++;
-            c[k] = s[i];
+            st.push(s[i]);
         }
     }
-    REP(i, s.size()) cout << c[i] << " ";
-    cout << endl;
     cout << ret << endl;
     return 0;
 }
