@@ -3,7 +3,8 @@
 #include <utility> // pair
 #include <string>
 #include <vector>
-#define MAX_N 51
+#define MAX_N 100001
+#define MAX_A 100001
 using namespace std;
 using ll = long long;
 using P = pair<ll, ll>;
@@ -13,24 +14,25 @@ using P = pair<ll, ll>;
 #define ALL(v) v.begin(), v.end()
 #define pb push_back
 const ll INF = 9e18;
-ll n, x[MAX_N], y[MAX_N];
+ll n, m, max_b[MAX_N], now[MAX_N];
+vector<ll> v[MAX_A];
+// priority_queue<ll, vector<ll>, greater<ll>> q;
+priority_queue<ll> q;
 
 signed main(){
-	cin >> n;
-	REP(i, n) cin >> x[i] >> y[i];
-	ll ret = INF;
-	REP(i, n) REP(j, n){
-		if(i == j) continue;
-		ll p = x[i] - x[j], q = y[i] - y[j];
-		vector<P> e;
-		REP(k, n) REP(l, n){
-			if(k == l) continue;
-			if(x[k] - x[l] == p && y[k] - y[l] == q) e.pb(P(k, l));
+	cin >> n >> m;
+	ll ret = 0;
+	REP(i, n){ ll a, b; cin >> a >> b; v[a].pb(b); }
+	FOR(i, 1, m+1){
+		for(auto e: v[i]){
+			q.push(e);
 		}
-		ret = min(ret, n - (ll)e.size());
-
+		if(!q.empty()){
+			ret += q.top();
+			q.pop();
+		}
 	}
-	if(n == 1) ret = 1;
 	cout << ret << endl;
+
     return 0;
 }

@@ -3,7 +3,7 @@
 #include <utility> // pair
 #include <string>
 #include <vector>
-#define MAX_N 51
+#define MAX_N 100001
 using namespace std;
 using ll = long long;
 using P = pair<ll, ll>;
@@ -13,24 +13,14 @@ using P = pair<ll, ll>;
 #define ALL(v) v.begin(), v.end()
 #define pb push_back
 const ll INF = 9e18;
-ll n, x[MAX_N], y[MAX_N];
+ll n, a, b, c, d;
 
 signed main(){
-	cin >> n;
-	REP(i, n) cin >> x[i] >> y[i];
-	ll ret = INF;
-	REP(i, n) REP(j, n){
-		if(i == j) continue;
-		ll p = x[i] - x[j], q = y[i] - y[j];
-		vector<P> e;
-		REP(k, n) REP(l, n){
-			if(k == l) continue;
-			if(x[k] - x[l] == p && y[k] - y[l] == q) e.pb(P(k, l));
-		}
-		ret = min(ret, n - (ll)e.size());
-
+	cin >> a >> b >> c >> d;
+	if(c - a == 0){
+		cout << 0 << endl;
+	}else{
+		cout << 1 << endl;
 	}
-	if(n == 1) ret = 1;
-	cout << ret << endl;
     return 0;
 }
