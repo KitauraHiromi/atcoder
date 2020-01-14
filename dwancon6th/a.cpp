@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#include <utility> // pair
+#include <string>
+#include <vector>
+#define MAX_N 200001
+using namespace std;
+using ll = long long;
+using P = pair<ll, ll>;
+#define FOR(i, a, b) for(ll i=a; i<b; i++)
+#define REP(i, n) for(ll i=0; i<n; i++)
+#define REV(i, n) for(ll i=n-1; i>=0; i--)
+#define ALL(v) v.begin(), v.end()
+#define pb push_back
+const ll INF = 9e18;
+ll n, t[MAX_N];
+string s[MAX_N], x;
+
+signed main(){
+    cin >> n;
+    REP(i, n) cin >> s[i] >> t[i];
+    cin >> x;
+
+    ll ret = 0;
+    bool flag = false;
+    REP(i, n){
+        if(flag){
+            ret += t[i];
+        }
+        if(s[i] == x){
+            flag = true;
+        }
+    }
+    cout << ret << endl;
+    return 0;
+}
