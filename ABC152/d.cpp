@@ -13,9 +13,28 @@ using P = pair<ll, ll>;
 #define ALL(v) v.begin(), v.end()
 #define pb push_back
 const ll INF = 9e18;
-ll n;
+ll n, c[10][10];
+
+// n次元配列の初期化。第２引数の型のサイズごとに初期化していく。
+template<typename A, size_t N, typename T>
+void Fill(A (&array)[N], const T &val){
+    std::fill( (T*)array, (T*)(array+N), val );
+}
 
 signed main(){
-    cout << "compiled!" << endl;
+    cin >> n;
+    Fill(c, 0);
+    for(ll i=1; i<=n; i++){
+        ll b = i % 10;
+        ll t = i;
+        while(t >= 10){
+            t /= 10;
+        }
+        // assert(t > 0);
+        c[t][b]++;
+    }
+    ll ret = 0;
+    REP(i, 10) REP(j, 10) ret += c[i][j] * c[j][i];
+    cout << ret << endl;
     return 0;
 }
