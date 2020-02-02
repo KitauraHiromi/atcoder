@@ -14,7 +14,9 @@ using P = pair<ll, ll>;
 #define ALL(v) v.begin(), v.end()
 #define pb push_back
 const ll INF = 9e18;
-ll n, c[MAX_N];
+ll n, k, a[MAX_N], m[MAX_N];
+
+typedef long long ll;
 
 ll modpow(ll x, ll n) {
     if (n == 0) return 1;
@@ -67,30 +69,32 @@ ll nHr(ll n, ll r) {
     return nCr(n + r - 1, r);
 }
 
-
-ll mod_pow(ll x, ll n){
-    ll res = 1;
-    while(n > 0){
-        if(n & 1) res = res * x % mod;
-        x = x * x % mod;
-        n >>= 1;
-    }
-    return res;
-}
-
 signed main(){
-    cin >> n;
-    REP(i, n) cin >> c[i];
-    sort(c, c+n);
-    ll ret = 0;
+    cin >> n >> k;
+    REP(i, n) cin >> a[i];
+    sort(a, a+n);
 
-    REP(i, n){
-        ll add = (n - i + 1) * c[i] % mod;
-        add *= modpow(2, 2*n-2);
-        add %= mod;
-        ret += add;
+    ll ret = 0;
+    init_fact(n);
+
+    // max
+    for(ll i=k; i<=n; i++){
+        ret += nCr(i-1, k-1) * a[i-1];
         ret %= mod;
     }
+
+    // min
+    m[n-k] = 1;
+    for(ll i=k+1; i<=n; i++){
+        m[n-i] += m[n-i+1] +  nCr(i-2, k-2);
+        m[n-i] %= mod;
+    }
+    for(ll i=0; i<=n-k; i++){
+        ret -= m[i] * a[i];
+        ret %= mod;
+        if(ret < 0) ret += mod;
+    }
+
     cout << ret << endl;
     return 0;
 }
